@@ -1,0 +1,1 @@
+define(["../core","../selector","../effects"],function(e){e.expr.pseudos.animated=function(n){return e.grep(e.timers,function(e){return n===e.elem}).length}});

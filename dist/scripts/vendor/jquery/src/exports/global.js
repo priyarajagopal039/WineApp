@@ -1,0 +1,1 @@
+define(["../core"],function(n,w){var o=window.jQuery,i=window.$;n.noConflict=function(w){return window.$===n&&(window.$=i),w&&window.jQuery===n&&(window.jQuery=o),n},w||(window.jQuery=window.$=n)});
