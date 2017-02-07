@@ -1,1 +1,0 @@
-define(["./core"],function(n){n.fn.extend({bind:function(n,e,t){return this.on(n,null,e,t)},unbind:function(n,e){return this.off(n,null,e)},delegate:function(n,e,t,f){return this.on(e,n,t,f)},undelegate:function(n,e,t){return 1===arguments.length?this.off(n,"**"):this.off(e,n||"**",t)}}),n.parseJSON=JSON.parse});
