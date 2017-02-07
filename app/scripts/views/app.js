@@ -5,6 +5,7 @@ define(['jquery','underscore','backbone','views/header'], function($, _, Backbon
     template: _.template($("#homepage").html()),
     render: function (template) {
       this.$el.html(template);
+      //attach header to the page as a childView on current View/template
       var headerV = new headerView();
       this.childViews.push(headerV);
       $(".placeholder").append(headerV.$el);

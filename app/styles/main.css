@@ -80,7 +80,6 @@ ul.submenu > li:not(:last-child) {
 }
 ul.submenu > li > a:hover{
   color: #222222;
-  opacity:1;
   text-decoration: underline;
 }
 
