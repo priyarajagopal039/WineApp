@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "devDependencies": {
+    "bower": "^1.8.0"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  }
+}
