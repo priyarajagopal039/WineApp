@@ -15,25 +15,17 @@
     <!-- build:css(.tmp) styles/main.css -->
   </head>
   <body>
-    <script id="header" type="text/template">
+    <div id="header">
       <h3 class="cursive">
         <div class="nav">
         <ul class="hamburger">
             <li id="sub">
               <img class="menu" src="images/svg/icon-menu.svg" alt="Wine Menu">
               <ul class="submenu">
-                <li id="mredwine" data-category="Red Wines" data-category="Red Wines" data-winefilter="(7155+2398+124+143)">
-                  <a href="#" >  Red Wine </a>
-                </li>
-                <li id="mwhitewine" data-category="White Wine" data-winefilter="(7155+125+140+105)">
-                  <a href="#" >White Wine </a>
-                </li>
-                <li id="mchampagne"  data-category="Champagnes and Sparkling" data-winefilter="(7155+123+109)">
-                  <a href="#"> Champagne & Sparkling </a>
-                </li>
-                <li id="mcollectible" data-category="Wine Collectibles" data-winefilter="(7155+36+104)">
-                  <a href="#"> Collectibles </a>
-                </li>
+                <li  data-category="Red Wines" data-winefilter="(7155+2398+124+143)"><a id="menu-redwine" data-category="Red Wines" data-winefilter="(7155+2398+124+143)"> Red Wine </a></li>
+                <li id="menu-whitewine" data-category="White Wine" data-winefilter="(7155+125+140+105)"> White Wine </li>
+                <li id="menu-champagne"  data-category="Champagnes and Sparkling" data-winefilter="(7155+123+109)"> Champagne & Sparkling </li>
+                <li id="menu-collectible" data-category="Wine Collectibles" data-winefilter="(7155+36+104)"> Collectibles </li>
               </ul>
             </li>
           </ul>
@@ -45,15 +37,12 @@
       </h3>
       <br/>
       <br/>
-    </script>
+    </div>
 
     <div id="container">
     </div>
 
     <script type="text/template" id="homepage">
-      <div class="placeholder">
-      </div>
-
       <div>
       <!--  <h6> Discover Wine collections </h6>-->
         <div class="row spacer">
@@ -88,8 +77,6 @@
     </script>
 
     <script type="text/template" id="productDetail">
-      <div class="placeholder">
-      </div>
       <h2><p id="winename"><%= name %></p></h2>
       <img id="prodthumbnail" src="<%= thumbnail %>">
       <div class="details inline-block">
@@ -100,8 +87,6 @@
     </script>
 
     <script type="text/template" id="displayItems">
-      <div class="placeholder">
-      </div>
       <p id="categoryName"><%= category %> List</p>
       <ul id="productlist" class="products">
         <% _.each(response, function(obj,index,ele) { %>
