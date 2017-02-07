@@ -1,16 +1,19 @@
-define(['jquery','underscore','backbone'], function($, _, Backbone) {
+define(['jquery','underscore','backbone','views/header'], function($, _, Backbone,headerView) {
   var products;
   var App = Backbone.View.extend({
     el: $("#container"),
     template: _.template($("#homepage").html()),
-    render: function () {
-      var markup = _.template($("#homepage").html());
-      this.$el.html(markup);
+    render: function (template) {
+      this.$el.html(template);
+      var headerV = new headerView();
+      this.childViews.push(headerV);
+      $(".placeholder").append(headerV.$el);
     },
     initialize: function () {
+      this.childViews = [];
       console.log("Wine View initialized");
       //this.WineModel1 = new WineModel();
-      this.render();
+      this.render(this.template);
     },
     events: {
       "click #redwine": "getWineData",
@@ -18,18 +21,20 @@ define(['jquery','underscore','backbone'], function($, _, Backbone) {
       "click #champagne": "getWineData",
       "click #collectible": "getWineData",
       "click .product-img": "getWineDetails",
-      "click .submenu": "displayMenuItems",
-      "click .menu-redwine": "displayMenuItems"
+      "click #mredwine": "displayMenuItems",
+      "click #mwhitewine": "displayMenuItems",
+      "click #mchampagne": "displayMenuItems",
+      "click #mcollectible": "displayMenuItems"
     },
     displayMenuItems: function(e) {
-      getWineDetails(e);
+      this.getWineData(e);
     },
     getWineDetails: function (e) {
       var objIndex = $(e.currentTarget).data('index');
       var list = products["Products"];
       var obj = list["List"][objIndex];
       var markup=_.template($('#productDetail').html());
-     this.$el.html(markup({name: obj.Name, price: obj.PriceRetail, vintage: obj.Vintage, style: obj["ProductAttributes"][0].Name, thumbnail: obj['Labels'][0].Url}));
+     this.render(markup({name: obj.Name, price: obj.PriceRetail, vintage: obj.Vintage, style: obj["ProductAttributes"][0].Name, thumbnail: obj['Labels'][0].Url}));
     },
     getWineData: function (e) {
       //perform a rest call here to fetch data related to a specific category
@@ -48,7 +53,7 @@ define(['jquery','underscore','backbone'], function($, _, Backbone) {
         var markup=_.template($('#displayItems').html());
         var obj = res["Products"];
         var list = obj["List"];
-        self.$el.html(markup({category: categoryName, response: list}));
+        self.render(markup({category: categoryName, response: list}));
         //self.addListItems(res);
       }).catch(function(err) {
         console.log("Error in request: ",err);

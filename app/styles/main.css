@@ -78,8 +78,10 @@ ul.submenu > li:not(:last-child) {
   border-bottom: 3px solid #111312;
   margin-right: 20px;
 }
-ul.submenu > li > a{
+ul.submenu > li > a:hover{
   color: #222222;
+  opacity:1;
+  text-decoration: underline;
 }
 
 .indent {
